@@ -52,15 +52,18 @@ buttons.addEventListener("click", (event) => {
     case "equals":
       let result = displayToOperate();
       clearDisplay();
-      populateDisplay(result)
+      populateDisplay(result);
       break;
     case "clear":
       clearDisplay();
-      break; 
+      break;
   }
 });
 
-function displayToOperate (){
+function displayToOperate() {
   const arr = display.textContent.split(" ");
+  if (arr[1] === "/" && arr[2] === "0") {
+    return "Oye, Parker. Estas demente";
+  }
   return operate(Number(arr[0]), arr[1], Number(arr[2]));
 }
