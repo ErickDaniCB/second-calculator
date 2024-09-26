@@ -61,8 +61,8 @@ buttons.addEventListener("click", (event) => {
       }
       break;
     case "equals":
-      arr = display.textContent.split(" ");
-      if (arr.length === 3) {
+      if (display.textContent.split(" ").length === 3) {
+        arr = display.textContent.split(" ");
         result = displayToOperate(arr);
         clearDisplay();
         populateDisplay(result);
