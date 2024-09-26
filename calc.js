@@ -48,13 +48,16 @@ buttons.addEventListener("click", (event) => {
       populateDisplay(event.target.textContent);
       break;
     case "op":
-      if (display.textContent && display.textContent.split(" ").length !== 3) {
-        populateDisplay(event.target.textContent);
-      } else {
-        arr = display.textContent.split(" ");
-        result = displayToOperate(arr);
-        clearDisplay();
-        populateDisplay(result + event.target.textContent);
+      if (display.textContent && !display.textContent.includes(" ")) {
+        if (display.textContent.split(" ").length !== 3) {
+          populateDisplay(event.target.textContent);
+        } 
+        else {
+          arr = display.textContent.split(" ");
+          result = displayToOperate(arr);
+          clearDisplay();
+          populateDisplay(result + event.target.textContent);
+        }
       }
       break;
     case "equals":
