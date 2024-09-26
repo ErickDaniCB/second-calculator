@@ -1,0 +1,66 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#container {
+  outline: 2px solid black;
+  height: 600px;
+  width: 450px;
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+}
+
+.top {
+  outline: 1px solid black;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#screen{
+  outline: 2px solid black;
+  width: 90%;
+  height: 90%;
+  background-color: rgb(218, 250, 215);
+}
+
+.bot {
+  flex-grow: 1;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.bot button {
+  flex-basis: 25%;
+  font-size: 2em;
+}
+
+#ac {
+  flex-basis: 75%;
+  background-color: rgb(250, 222, 215);
+}
+
+.zero {
+  flex-grow: 2;
+}
+
+.num {
+  background-color: aliceblue;
+}
+
+.op {
+  background-color: antiquewhite;
+}
+
+.float {
+  background-color: rgb(243, 250, 215);
+}
