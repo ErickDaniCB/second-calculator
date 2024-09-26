@@ -26,11 +26,12 @@ body {
   align-items: center;
 }
 
-#screen{
+#display{
   outline: 2px solid black;
   width: 90%;
   height: 90%;
   background-color: rgb(218, 250, 215);
+  font-size: 2em;
 }
 
 .bot {
@@ -61,6 +62,6 @@ body {
   background-color: antiquewhite;
 }
 
-.float {
+.float, .equals{
   background-color: rgb(243, 250, 215);
 }

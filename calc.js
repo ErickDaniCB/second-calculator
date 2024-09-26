@@ -14,10 +14,6 @@ function divide(a, b) {
   return a / b;
 }
 
-let firstNum = 0;
-let secondNum = 0;
-let operator;
-
 function operate(a, b, op) {
   switch (op) {
     case "+":
@@ -34,3 +30,26 @@ function operate(a, b, op) {
       break;
   }
 }
+
+const display = document.querySelector("#display");
+
+function populateDisplay(digit) {
+  display.textContent += digit;
+}
+
+function clearDisplay() {
+  display.textContent = "";
+}
+
+const buttons = document.querySelector(".bot");
+
+buttons.addEventListener("click", (event) => {
+  switch (event.target.classList[0]) {
+    case "num":
+      populateDisplay(event.target.textContent);
+      break;
+    case "op":
+      populateDisplay(event.target.textContent);
+      break;
+  }
+});
