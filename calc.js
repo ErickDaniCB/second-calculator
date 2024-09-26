@@ -39,20 +39,31 @@ function clearDisplay() {
 
 const buttons = document.querySelector(".bot");
 
+let arr;
+let result;
+
 buttons.addEventListener("click", (event) => {
   switch (event.target.classList[0]) {
     case "num":
       populateDisplay(event.target.textContent);
       break;
     case "op":
-      if (display.textContent) {
+      if (display.textContent && display.textContent.split(" ").length !== 3) {
         populateDisplay(event.target.textContent);
+      } else {
+        arr = display.textContent.split(" ");
+        result = displayToOperate(arr);
+        clearDisplay();
+        populateDisplay(result + event.target.textContent);
       }
       break;
     case "equals":
-      let result = displayToOperate();
-      clearDisplay();
-      populateDisplay(result);
+      arr = display.textContent.split(" ");
+      if (arr.length === 3) {
+        result = displayToOperate(arr);
+        clearDisplay();
+        populateDisplay(result);
+      }
       break;
     case "clear":
       clearDisplay();
@@ -60,8 +71,7 @@ buttons.addEventListener("click", (event) => {
   }
 });
 
-function displayToOperate() {
-  const arr = display.textContent.split(" ");
+function displayToOperate(arr) {
   if (arr[1] === "/" && arr[2] === "0") {
     return "Oye, Parker. Estas demente";
   }
