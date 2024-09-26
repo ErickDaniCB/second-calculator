@@ -14,20 +14,16 @@ function divide(a, b) {
   return a / b;
 }
 
-function operate(a, b, op) {
+function operate(a, op, b) {
   switch (op) {
     case "+":
-      add(a, b);
-      break;
+      return add(a, b);
     case "-":
-      subtract(a, b);
-      break;
+      return subtract(a, b);
     case "*":
-      multiply(a, b);
-      break;
+      return multiply(a, b);
     case "/":
-      divide(a, b);
-      break;
+      return divide(a, b);
   }
 }
 
@@ -49,7 +45,22 @@ buttons.addEventListener("click", (event) => {
       populateDisplay(event.target.textContent);
       break;
     case "op":
-      populateDisplay(event.target.textContent);
+      if (display.textContent) {
+        populateDisplay(event.target.textContent);
+      }
       break;
+    case "equals":
+      let result = displayToOperate();
+      clearDisplay();
+      populateDisplay(result)
+      break;
+    case "clear":
+      clearDisplay();
+      break; 
   }
 });
+
+function displayToOperate (){
+  const arr = display.textContent.split(" ");
+  return operate(Number(arr[0]), arr[1], Number(arr[2]));
+}
