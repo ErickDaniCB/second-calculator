@@ -42,6 +42,8 @@ const buttons = document.querySelector(".bot");
 let arr;
 let result;
 
+const floatBtn = document.querySelector(".float");
+
 buttons.addEventListener("click", (event) => {
   switch (event.target.classList[0]) {
     case "num":
@@ -51,12 +53,13 @@ buttons.addEventListener("click", (event) => {
       if (display.textContent && !display.textContent.includes(" ")) {
         if (display.textContent.split(" ").length !== 3) {
           populateDisplay(event.target.textContent);
-        } 
-        else {
+          floatBtn.removeAttribute("disabled");
+        } else {
           arr = display.textContent.split(" ");
           result = displayToOperate(arr);
           clearDisplay();
           populateDisplay(result + event.target.textContent);
+          floatBtn.removeAttribute("disabled");
         }
       }
       break;
@@ -66,11 +69,20 @@ buttons.addEventListener("click", (event) => {
         result = displayToOperate(arr);
         clearDisplay();
         populateDisplay(result);
+        floatBtn.removeAttribute("disabled")
       }
-      break;
+      break; 
     case "clear":
       clearDisplay();
       break;
+    case "float":
+      if (!display.textContent) {
+        display.textContent += "0.";
+        floatBtn.disabled = "true";
+      } else {
+        display.textContent += ".";
+        floatBtn.disabled = "true";
+      }
   }
 });
 
